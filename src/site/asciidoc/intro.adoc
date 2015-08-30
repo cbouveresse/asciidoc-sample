@@ -4,5 +4,11 @@ Snippet xml
 [snippet,xml]
 ----
 source=pom.xml
-tag=snip-id
+tags=snip-id
+----
+
+[source,xml]
+Include from pom.xml
+----
+include::pom.xml[tags=snip-id]
 ----
