@@ -1,6 +1,6 @@
-= Title
+= Guide
 
-Paraf i.
+Paraf 1.
 
 
 
@@ -9,3 +9,8 @@ Paraf i.
 ----
 include::src/main/java/asciidoc_maven_site_sample/asciidoc_maven_site_sample/App.java[tags=main]
 ----
+
+
+Include Intro
+include::intro.adoc[]
+
