@@ -1,0 +1,8 @@
+Test
+
+Snippet xml
+[snippet,xml]
+----
+source=pom.xml
+tag=snip-id
+----
