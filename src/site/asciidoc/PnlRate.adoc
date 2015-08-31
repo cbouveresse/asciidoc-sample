@@ -1,1 +1,63 @@
 
+GREAT Reference Manual Sample 
+=============================
+:numbered:
+
+Market Data : Get rates, prices and closing to live moves
+---------------------------------------------------------
+Risk Data : Get sensitivities
+-----------------------------
+Risk views and transformation: aggregation, bucketing, bond future equivalent
+----------------------------------------------------------------------------
+Pnl Computing
+-------------
+Pnl Rate
+~~~~~~~~
+
+**Name**  Pnl.DeltaRate
+
+**Description** This measure is computed for RiskType = RateRisk, CimBasisSwapRisk, BasisSwapRisk, SpotRARisk, RatexRateRisk, BasisxRateRisk, SpotxRateRisk, RatexBasisRisk, BasisxBasisRisk, SpotxBasisRisk, RatexSpotRisk and BasisxSpotRisk
+
+**Required mapping dimensions**
+
+**Useful Context Vars**
+
+**Algorithm**
+
+---------------------------------------------------------------------------------------------------------------
+If RiskType = RateRisk, CimBasisSwapRisk, BasisSwapRisk, SpotRARisk
+  PnL.DeltaRate = Sensi.DisplayCurrency * MarketData.RateMove
+
+If Sensi.DisplayCurrency < 1 and MarketData.RateMove = NaN then PnL.DeltaRate = 0
+
+If RiskType = RatexRateRisk, BasisxRateRisk, SpotxRateRisk, RatexBasisRisk, 
+BasisxBasisRisk, SpotxBasisRisk, RatexSpotRisk and BasisxSpotRisk
+  PnL.DeltaRate = ½  * sensi.DisplayCurrency * MarketData.RateMove * MarketParam.RateMove
+
+If Sensi.DisplayCurrency < 1 and (MarketData.RateMove = NaN or MarketParam.RateMove = NaN) 
+  PnL.DeltaRate = 0
+---------------------------------------------------------------------------------------------------------------
+
+**Parent Measures**
+MarketData.RateMove
+
+**Extra info**
+
+Stress Tests
+------------
+Limits
+------
+Dimensions and context values register 
+--------------------------------------
+Filters, row/column labels
+Context Data
+~~~~~~~~~~~~
+Market Data context values
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Bucketing context values
+^^^^^^^^^^^^^^^^^^^^^^^^
+Other
+^^^^^^
+Dimensions 
+~~~~~~~~~~
+[[X1]]
