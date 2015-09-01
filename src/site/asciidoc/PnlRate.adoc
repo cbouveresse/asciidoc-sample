@@ -5,16 +5,35 @@ GREAT Reference Manual Sample
 
 Market Data : Get rates, prices and closing to live moves
 ---------------------------------------------------------
+
 Risk Data : Get sensitivities
 -----------------------------
+sensi.DisplayCurrency
+^^^^^^^^^^^^^^^^^^^^
+**Required mapping dimensions** <<X1, RiskType>>
+
+**Parent Measures** sensi.
+
+**Description** 
+
+**Useful Context Vars** <<X2, ValueDate>>, <<X3,MarketDataRefSet>>
+
+**Algorithm**
+
+**Useful Context Vars** <<X4,DisplayCurrency>>
+
 Risk views and transformation: aggregation, bucketing, bond future equivalent
 ----------------------------------------------------------------------------
 Pnl Computing
 -------------
 Pnl Rate
 ~~~~~~~~
+[[X5]]
+Pnl.DeltaRate
+^^^^^^^^^^^^
+**Required mapping dimensions** <<X1, RiskType>>
 
-**Name**  Pnl.DeltaRate
+**Parent Measures** sensi.DisplayCurrency, marketData.Move, marketParam.Move
 
 **Description** This measure is computed for the following RiskTypes = 
 - RateRisk
@@ -23,11 +42,9 @@ Pnl Rate
 - SpotRARisk
 - ARGen : RatexRateRisk, BasisxRateRisk, SpotxRateRisk, RatexBasisRisk, BasisxBasisRisk, SpotxBasisRisk, RatexSpotRisk and BasisxSpotRisk
 
-_description is supposed to display after 'Useful Context Vars' as it is a custom info..._
+_Problem: The Description par is displayed after all the generated it is a custom info...Even if it's the basic info_
 
-**Required mapping dimensions** <<X1, RiskType>>
-
-**Useful Context Vars** ValueDate, MarketDataRefSet, DisplayCurrency
+**Useful Context Vars** <<X2, ValueDate>>, <<X3,MarketDataRefSet>>
 
 **Algorithm**
 
@@ -45,8 +62,6 @@ If Sensi.DisplayCurrency < 1 and (MarketData.RateMove = NaN or MarketParam.RateM
   PnL.DeltaRate = 0
 ---------------------------------------------------------------------------------------------------------------
 
-**Parent Measures** sensi.DisplayCurrency, marketData.Move, marketParam.Move
-
 **Extra info**
 
 Stress Tests
@@ -62,8 +77,6 @@ Other
 [[X1]]
 RiskType
 ^^^^^^^^
-**Name** RiskType
-
 **Values** RateRisk, CimBasisSwapRisk, BasisSwapRisk, SpotRARisk, RatexRateRisk, BasisxRateRisk, SpotxRateRisk, RatexBasisRisk, BasisxBasisRisk, SpotxBasisRisk, RatexSpotRisk, BasisxSpotRisk, ThetaRisk, ZcInflarisk, ZspreadRisk, FastValueRisk, CredersARRisk, OisCashRisk, OisCartoRisk, ExoticRisk, FxCartoRisk, IborCartoRisk, InflaxRateRisk, OfficialLiquidityRisk, RatexInflaRisk, NominalRisk, BondSensiRisk
 
 **isJoined** No
@@ -91,7 +104,47 @@ Context Data register
 ---------------------
 Market Data context values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+[[X2]]
+ValueDate
+^^^^^^^^^^
+**Values** 01/09/2015 or 31/08/2015
+
+**Default Value** 01/09/2015
+
+_will be automatically set to the day when the doc has been generated... no use in this piece of info_
+
+**Description** Get market Data from current date or the day before. Default value is "today".
+
+**Values description** 
+
+**Extra info**
+
+[[X3]]
+MarketData Referential Set
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Values**
+
+**Default Value** All 
+
+**Description**
+
+**Values description**
+
+**Extra info**
+
 Bucketing context values
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Other
 ~~~~
+[[X4]]
+DisplayCurrency
+^^^^^^^^^^^^^^
+**Values** ["AUD","JPY","GBP","USD","EUR"]
+
+**Default Value** EUR
+
+**Description** All the measures with the suffix “.DisplayCurrency” will be displayed in the currency mentioned in this context. (Same for all the measures which depend on those ones)
+
+**Values description** 
+
+**Extra info**
