@@ -22,9 +22,10 @@ Pnl Rate
 - BasisSwapRisk
 - SpotRARisk
 - ARGen : RatexRateRisk, BasisxRateRisk, SpotxRateRisk, RatexBasisRisk, BasisxBasisRisk, SpotxBasisRisk, RatexSpotRisk and BasisxSpotRisk
+
 _description is supposed to display after 'Useful Context Vars' as it is a custom info..._
 
-**Required mapping dimensions** RiskType
+**Required mapping dimensions** <<X1, RiskType>>
 
 **Useful Context Vars** ValueDate, MarketDataRefSet, DisplayCurrency
 
@@ -52,26 +53,14 @@ Stress Tests
 ------------
 Limits
 ------
-Dimensions and context values register 
---------------------------------------
+Dimensions register 
+--------------------
 Filters, row/column labels
-
-Context Data
-~~~~~~~~~~~~
-Market Data context values
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-Bucketing context values
-^^^^^^^^^^^^^^^^^^^^^^^^
 Other
-^^^^^^
-Dimensions 
-~~~~~~~~~~
+~~~~~~
 [[X1]]
-Other
-^^^^^
 RiskType
-++++++++
-
+^^^^^^^^
 **Name** RiskType
 
 **Values** RateRisk, CimBasisSwapRisk, BasisSwapRisk, SpotRARisk, RatexRateRisk, BasisxRateRisk, SpotxRateRisk, RatexBasisRisk, BasisxBasisRisk, SpotxBasisRisk, RatexSpotRisk, BasisxSpotRisk, ThetaRisk, ZcInflarisk, ZspreadRisk, FastValueRisk, CredersARRisk, OisCashRisk, OisCartoRisk, ExoticRisk, FxCartoRisk, IborCartoRisk, InflaxRateRisk, OfficialLiquidityRisk, RatexInflaRisk, NominalRisk, BondSensiRisk
@@ -97,3 +86,12 @@ RiskType
 |ZcInflaRisk        |a 
 |=====================================================
 **Extra Info** ARGen = crossed risks ex: BasisxRateRisk
+
+Context Data register 
+---------------------
+Market Data context values
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+Bucketing context values
+~~~~~~~~~~~~~~~~~~~~~~~~
+Other
+~~~~
