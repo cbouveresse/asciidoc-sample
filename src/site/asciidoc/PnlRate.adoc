@@ -56,6 +56,7 @@ Limits
 Dimensions register 
 --------------------
 Filters, row/column labels
+
 Other
 ~~~~~~
 [[X1]]
@@ -72,7 +73,6 @@ RiskType
 **Description** Type of Risk
 
 **Values Description**
-.Default DelimitedBlock substitutions
 [cols="1e,1*^",frame="topbot",options="header,autowidth"]
 |=====================================================
 | Dimension value |Description 
