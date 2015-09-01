@@ -16,11 +16,17 @@ Pnl Rate
 
 **Name**  Pnl.DeltaRate
 
-**Description** This measure is computed for RiskType = RateRisk, CimBasisSwapRisk, BasisSwapRisk, SpotRARisk, RatexRateRisk, BasisxRateRisk, SpotxRateRisk, RatexBasisRisk, BasisxBasisRisk, SpotxBasisRisk, RatexSpotRisk and BasisxSpotRisk
+**Description** This measure is computed for the following RiskTypes = 
+- RateRisk
+- CimBasisSwapRisk
+- BasisSwapRisk
+- SpotRARisk
+- ARGen : RatexRateRisk, BasisxRateRisk, SpotxRateRisk, RatexBasisRisk, BasisxBasisRisk, SpotxBasisRisk, RatexSpotRisk and BasisxSpotRisk
+_description is supposed to display after 'Useful Context Vars' as it is a custom info..._
 
-**Required mapping dimensions**
+**Required mapping dimensions** RiskType
 
-**Useful Context Vars**
+**Useful Context Vars** ValueDate, MarketDataRefSet, DisplayCurrency
 
 **Algorithm**
 
@@ -38,8 +44,7 @@ If Sensi.DisplayCurrency < 1 and (MarketData.RateMove = NaN or MarketParam.RateM
   PnL.DeltaRate = 0
 ---------------------------------------------------------------------------------------------------------------
 
-**Parent Measures**
-MarketData.RateMove
+**Parent Measures** sensi.DisplayCurrency, marketData.Move, marketParam.Move
 
 **Extra info**
 
@@ -50,6 +55,7 @@ Limits
 Dimensions and context values register 
 --------------------------------------
 Filters, row/column labels
+
 Context Data
 ~~~~~~~~~~~~
 Market Data context values
@@ -61,3 +67,33 @@ Other
 Dimensions 
 ~~~~~~~~~~
 [[X1]]
+Other
+^^^^^
+RiskType
+++++++++
+
+**Name** RiskType
+
+**Values** RateRisk, CimBasisSwapRisk, BasisSwapRisk, SpotRARisk, RatexRateRisk, BasisxRateRisk, SpotxRateRisk, RatexBasisRisk, BasisxBasisRisk, SpotxBasisRisk, RatexSpotRisk, BasisxSpotRisk, ThetaRisk, ZcInflarisk, ZspreadRisk, FastValueRisk, CredersARRisk, OisCashRisk, OisCartoRisk, ExoticRisk, FxCartoRisk, IborCartoRisk, InflaxRateRisk, OfficialLiquidityRisk, RatexInflaRisk, NominalRisk, BondSensiRisk
+
+**isJoined** No
+
+**isEnriched** No
+
+**Description** Type of Risk
+
+**Values Description**
+.Default DelimitedBlock substitutions
+[cols="1e,1*^",frame="topbot",options="header,autowidth"]
+|=====================================================
+| Dimension value |Description 
+
+|RateRisk | Rate Risk 
+|CimBasisSwapRisk     |Cross Intra Maturity Swap Risk  
+|BasisSwapRisk      |a  
+|SpotRaRisk     |a 
+|NominalRisk       |a 
+|BondSensiRisk     |a 
+|ZcInflaRisk        |a 
+|=====================================================
+**Extra Info** ARGen = crossed risks ex: BasisxRateRisk
